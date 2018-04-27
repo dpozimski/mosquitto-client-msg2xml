@@ -37,6 +37,7 @@ namespace MosquittoClient
                 .Build();
 
             await client.ConnectAsync(options);
+            await client.SubscribeAsync("#");
 
             client.ApplicationMessageReceived += OnApplicationMessageReceived;
         }

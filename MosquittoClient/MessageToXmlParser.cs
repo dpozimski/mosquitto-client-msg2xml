@@ -42,7 +42,7 @@ namespace MosquittoClient
             var pattern = patterns.FirstOrDefault(s => s.Topic == topic);
             //get default pattern
             if (pattern is null)
-                pattern = patterns.First(s => s.Topic == "Default");
+                pattern = patterns.First(s => s.Topic == "default");
             return pattern.Template;
         }
     }

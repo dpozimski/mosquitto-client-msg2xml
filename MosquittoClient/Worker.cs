@@ -28,16 +28,16 @@ namespace MosquittoClient
             await messageListener.StartAsync();
         }
 
-        private void OnMessageReceived(object sender, MqttApplicationMessage e)
+        private async void OnMessageReceived(object sender, MqttApplicationMessage e)
         {
             try
             {
-                messageRedirector.Redirect(e);
+                await messageRedirector.RedirectAsync(e);
                 Console.WriteLine($"Error while redirecting message. {e.Topic}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error while redirecting message. {e.Topic}, {e.Payload}, {ex.Message}");
+                Console.WriteLine($"Error while redirecting message. {e.Topic}, {e.Payload?.Length ?? 0}, {ex}");
             }
         }
     }

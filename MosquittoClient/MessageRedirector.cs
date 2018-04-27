@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MosquittoClient
 {
@@ -21,10 +22,10 @@ namespace MosquittoClient
             receiverHostEndpoint = configuration["xmlDocumentsReceiverEndpoint"];
         }
 
-        public void Redirect(MqttApplicationMessage message)
+        public async Task RedirectAsync(MqttApplicationMessage message)
         {
             var document = messageToXmlParser.Parse(message);
-            httpClient.PostAsync(receiverHostEndpoint, new StringContent(document));
+            await httpClient.PostAsync(receiverHostEndpoint, new StringContent(document));
         }
     }
 }
