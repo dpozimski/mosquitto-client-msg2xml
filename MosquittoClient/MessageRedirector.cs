@@ -25,6 +25,8 @@ namespace MosquittoClient
         public async Task RedirectAsync(MqttApplicationMessage message)
         {
             var document = messageToXmlParser.Parse(message);
+            Console.WriteLine("Redirect from: " + message.Topic);
+            Console.WriteLine("using xml doc: " + document);
             await httpClient.PostAsync(receiverHostEndpoint, new StringContent(document));
         }
     }

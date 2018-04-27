@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace MosquittoClient
@@ -39,10 +40,14 @@ namespace MosquittoClient
         private string GetTemplate(string topic)
         {
             //get specific pattern
-            var pattern = patterns.FirstOrDefault(s => s.Topic == topic);
+            var pattern = patterns.FirstOrDefault(s =>
+            {
+                var regex = new Regex(s.TopicSearchPattern, RegexOptions.ECMAScript);
+                return regex.Match(topic).Success;
+            });
             //get default pattern
             if (pattern is null)
-                pattern = patterns.First(s => s.Topic == "default");
+                pattern = patterns.First(s => s.TopicSearchPattern == "default");
             return pattern.Template;
         }
     }

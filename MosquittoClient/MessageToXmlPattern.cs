@@ -6,7 +6,7 @@ namespace MosquittoClient
 {
     class MessageToXmlPattern
     {
-        public string Topic { get; set; }
+        public string TopicSearchPattern { get; set; }
         public string Template { get; set; }
     }
 }
