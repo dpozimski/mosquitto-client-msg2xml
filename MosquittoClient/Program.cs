@@ -1,26 +1,23 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace MosquittoClient
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Console.WriteLine("Mosquitto client started");
 
-            var configurationFactory = new ConfigurationFactory();
-            var configuration = configurationFactory.Create();
-
-            var messageToXmlParser = new MessageToXmlParser(configuration);
-            var messageListener = new MessageListener(configuration);
-            var messageRedirector = new MessageRedirector(configuration, messageToXmlParser);
-
-            messageListener.MessageReceived += (o, e) =>
+            try
             {
-                messageRedirector.Redirect(e);
-            };
-
-            messageListener.Start();
+                Worker worker = new Worker();
+                await worker.StartAsync();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
 
             Console.WriteLine("Listener is active");
             Console.ReadKey();
