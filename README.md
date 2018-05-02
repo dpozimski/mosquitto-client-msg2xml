@@ -1,7 +1,7 @@
 # Overview
 Mosquitto client which listen for all topics and convert the messages into the xml document. The output data will be send to the dummy rest server.
 
-[Wath how it works on YouTube!](https://youtu.be/EqdYlqggDsc)
+[Watch how it works on YouTube!](https://youtu.be/EqdYlqggDsc)
 
 # Template system
 The converter is looking for xml pattern using incoming topic from each request.
