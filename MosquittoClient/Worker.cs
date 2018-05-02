@@ -33,7 +33,7 @@ namespace MosquittoClient
             try
             {
                 await messageRedirector.RedirectAsync(e);
-                Console.WriteLine($"Error while redirecting message. {e.Topic}");
+                Console.WriteLine($"The converted message with topic \"{e.Topic}\" has been redirected.");
             }
             catch (Exception ex)
             {
