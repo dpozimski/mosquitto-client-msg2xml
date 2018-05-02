@@ -25,20 +25,20 @@ It is done by this part of appsettings.json.
 
 # Authentication
 To connect to the mosquitto broker we will using credentials (username && password).
----json
+```json
 {
     "mqttCredentials": {
         "username": "admin",
         "password": "test123"
     }
 }
----
+```
 
 # Redirecting messages
 Converted messages will be redirected as a HTML request to host choosed in settings.
 For our scenario the mock rest server is used.
----json
+```json
 {
   "xmlDocumentsReceiverEndpoint": "https://jsonplaceholder.typicode.com/posts"
 }
----
+```
