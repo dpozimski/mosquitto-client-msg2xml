@@ -24,7 +24,7 @@ It is done by this part of appsettings.json.
 ```
 
 # Authentication
-To connect to the mosquitto broker we will using credentials (username && password).
+To connect to the mosquitto broker we are using credentials (username && password).
 ```json
 {
     "mqttCredentials": {
